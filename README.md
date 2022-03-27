@@ -1,2 +1,3 @@
-# js-helpers
-JavaScript hepler classes, functions etc.
+# JavaScript helpers
+  
+JavaScript helper classes, functions etc.
