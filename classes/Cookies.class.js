@@ -1,9 +1,8 @@
 /**
  * Cookies class -> easy work with cookies
- * TODO: finish setCookie, add deleteCookie
+ *
  * @author Jakub Pradeniak (https://github.com/JakubPradeniak)
  */
-
 module.exports = class Cookies {
 
     /**
@@ -27,6 +26,11 @@ module.exports = class Cookies {
      * Gets all cookies from document.cookie and processes them into array
      */
     processCookies() {
+        // If there are no cookies -> set this.cookies to empty array
+        if(document.cookie === "") {
+            this.cookies = []
+            return
+        }
         const cookies = document.cookie.split("; ")
         // Process cookies
         this.cookies = cookies.map(cookie => {
@@ -62,7 +66,7 @@ module.exports = class Cookies {
         const result = this.cookies.filter(cookie => {
             return cookie.name === name
         })
-        return result.keys.length === 0 ? false : result
+        return result.length === 1 ? result[0] : false
     }
 
     /**
@@ -75,18 +79,43 @@ module.exports = class Cookies {
         const result = this.cookies.filter(cookie => {
             return JSON.stringify(cookie.value) === JSON.stringify(value)
         })
-        return result.keys.length === 0 ? false : result
+        return result.length === 1 ? result[0] : false
     }
 
     /**
      * Sets new cookie
-     * TODO: finish adding cookie with options
+     * options.expireIn - expiration in days
      * @param {String} name Cookie name
      * @param {*} value Cookie content
      * @param {Object} options Additional options (not required)
+     * @returns {Object} cookie object
      */
-    setCookie(name, value, options = {lifeTime: 7, path: "/"}) {
+    setCookie(name, value, options = {expireIn: 7, path: "/"}) {
+        // Create expiration date
+        const dayInMilliseconds = 864e5
+        const expirationDate = new Date(
+            Date.now()
+            + (options.expireIn * dayInMilliseconds)
+        ).toGMTString()
+        // Create cookie
+        document.cookie = `${name}=${JSON.stringify(value)}; expires=${expirationDate}; path=${options.path}`
+        // Update this.cookies
+        this.processCookies()
+        // Return Cookie Object
+        return {
+            name: name,
+            value: value
+        }
+    }
 
+    /**
+     * Deletes cookie with specified name
+     * @param {String} name Name of cookie to be deleted
+     */
+    deleteCookie(name) {
+        document.cookie = `${name}=""; expires="Thu, 01 Jan 1970 00:00:00 GMT"`
+        // Update this.cookies
+        this.processCookies()
     }
 
 }

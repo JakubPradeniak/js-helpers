@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest --verbose --env=jsdom"
+    "test": "jest --coverage --verbose --env=jsdom"
   },
   "devDependencies": {
     "jest": "^27.5.1"
