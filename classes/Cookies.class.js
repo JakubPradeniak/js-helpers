@@ -3,7 +3,7 @@
  *
  * @author Jakub Pradeniak (https://github.com/JakubPradeniak)
  */
-module.exports = class Cookies {
+class Cookies {
 
     /**
      * {Array<Object>} storing all cookies.
@@ -71,7 +71,7 @@ module.exports = class Cookies {
 
     /**
      * Return cookie object with specified value.
-     * TODO: implement value comparison for arrays, objects (recursive algo)
+     * TODO: implement value comparison for arrays, objects (recursive algo), now using JSON.stringify -> bad performance, not going to work if props are in different order
      * @param {*} value Value of cookie we want to find
      * @returns {Object|Boolean} Cookie object on success, False on failure
      */
@@ -119,3 +119,6 @@ module.exports = class Cookies {
     }
 
 }
+
+// Export for testing
+module.exports = Cookies
