@@ -45,3 +45,10 @@ Set cookie options, expireIn - expiration in days (default values):
     path: "/"  
 }
 ```
+
+### Prototype extensions
+#### Array.prototype.isEqual
+`./classes/Cookies.class.js`
+  
+Performs equality check of two arrays.  
+*TODO: implement recursion*
