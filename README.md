@@ -1,6 +1,7 @@
 # JavaScript helpers
   
-JavaScript helper classes, functions etc.
+JavaScript helper classes, functions etc.  
+*Most of stuff written in this repo is just for practice* ;)
 
 ### Classes
 #### Cookies.class.js
@@ -48,7 +49,6 @@ Set cookie options, expireIn - expiration in days (default values):
 
 ### Prototype extensions
 #### Array.prototype.isEqual
-`./classes/Cookies.class.js`
+`./prototypes/isEqual.js`
   
-Performs equality check of two arrays.  
-*TODO: implement recursion*
+Performs equality check of two n-dimensional arrays.  
