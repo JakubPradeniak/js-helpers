@@ -5,7 +5,6 @@
  * @returns {Boolean}
  */
 Array.prototype.isEqual = function(array) {
-    console.log(`${this.length} : ${array.length}`)
     if(this.length !== array.length) return false
     let equal = true
     for(let i = 0; i < this.length; i++) {
