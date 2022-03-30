@@ -1,23 +1,28 @@
 /**
- * Extends Array with array equality check
+ * Extends Object with object equality check
  * TODO: how to do this in better way
- * @param {Array} array Array to compare
+ * @param {Object} object Object to compare
  * @returns {Boolean}
  */
-Array.prototype.isEqual = function(array) {
-    if(this.length !== array.length) return false
-    let equal = true
-    for(let i = 0; i < this.length; i++) {
-        if(typeof this[i] === 'object' && typeof array[i] === 'object') {
-            if(!this[i].isEqual(array[i])) {
-                equal = false
-                break;
+Object.prototype.isEqual = function(object) {
+    // If objects has different count of props they cannot be equal
+    if(Object.keys(this).length !== Object.keys(object).length) return false
+    let isEqual = true
+    for(const [key, value] of Object.entries(this)) {
+        if(!object.hasOwnProperty(key)) {
+            isEqual = false
+            break
+        }
+        if(typeof value === "object" && typeof object[key] === "object") {
+            if(!value.isEqual(object[key])) {
+                isEqual = false
+                break
             }
-        } else if(this[i] !== array[i]) {
-            equal = false
-            break;
+        } else if(value !== object[key]) {
+            isEqual = false
+            break
         }
     }
 
-    return equal
+    return isEqual
 }

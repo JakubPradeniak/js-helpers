@@ -1,7 +1,12 @@
 # JavaScript helpers
   
 JavaScript helper classes, functions etc.  
-*Most of stuff written in this repo is just for practice* ;)
+*Most of stuff written in this repo is just for practice, so if it will help someone it will be double-win* ;)
+### Prototype extensions
+#### Object.prototype.isEqual
+`./prototypes/isEqual.js`
+  
+Performs equality check of two (nested) objects/arrays.  
 
 ### Classes
 #### Cookies.class.js
@@ -46,9 +51,3 @@ Set cookie options, expireIn - expiration in days (default values):
     path: "/"  
 }
 ```
-
-### Prototype extensions
-#### Array.prototype.isEqual
-`./prototypes/isEqual.js`
-  
-Performs equality check of two n-dimensional arrays.  
